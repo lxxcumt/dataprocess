@@ -37,6 +37,9 @@ def eachFile(filepath):
 		plt.xlabel("Time(s)")
 		plt.ylabel("Temperature(C)")
 		plt.xlim(0, 610)
+		plt.subplots_adjust(wspace=0.2, hspace=0.4) #wspace 调整axes垂直间距水平间距，hspace 调整axes垂直间距
+		plt.legend()  #显示每条曲线的标签和样式的矩形区域
+
 		
 		
 filepath = raw_input("Please enter FilePath: ==>")
@@ -46,7 +49,7 @@ plt.figure(figsize = (16,8))
 eachFile(filepath)
 
 fig_name = raw_input("Please enter the name of plot:==> ")
-plt.legend()  #显示每条曲线的标签和样式的矩形区域
+
 plt.savefig('%s\\%s'%(filepath, fig_name), fmt = "png")
 plt.show() #在plt.show() 之前调用plt.savefig()， 否则生成的图片会一片空白
 

@@ -26,33 +26,27 @@ def eachFile(filepath):
 		zita.to_excel(writer, index = False)
 		writer.save()
 		
-		#生成图表
-		#zita.plot(figsize = (16,8))  #第一种生成图表方法
-		plt.figure(figsize = (16,8))  #第二种生成图表方法
+		#生成图表	
+		i = pathDir.index(allDir)+1
+		plt.sca(plt.subplot(2,2,i))
 		for each_column in Avril:
 			print each_column
 			plt.plot(zita[each_column],label = str(each_column), linewidth=2)
+		
+		plt.title(allDir)
 		plt.xlabel("Time(s)")
 		plt.ylabel("Temperature(C)")
-		plt.title(" Test Data")
 		plt.xlim(0, 610)
-		i = pathDir.index(allDir)
-		plt.subplot(4,4,i+1)
-		fig_name = raw_input("Please enter the name of plot:==> ")
-		plt.legend()  #显示每条曲线的标签和样式的矩形区域
-		plt.savefig('%s\\%s'%(filepath, fig_name), fmt = "png")
-		#plt.show() #在plt.show() 之前调用plt.savefig()， 否则生成的图片会一片空白
 		
 		
-		
-		#PathList.append(child)
-		#print child.decode('gbk')
-	#print PathList
-
 filepath = raw_input("Please enter FilePath: ==>")
+
+plt.figure(figsize = (16,8)) 
 
 eachFile(filepath)
 
-
-#please enter the columns that you need (such as 0,1,2,3):
+fig_name = raw_input("Please enter the name of plot:==> ")
+plt.legend()  #显示每条曲线的标签和样式的矩形区域
+plt.savefig('%s\\%s'%(filepath, fig_name), fmt = "png")
+plt.show() #在plt.show() 之前调用plt.savefig()， 否则生成的图片会一片空白
 
